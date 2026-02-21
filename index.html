@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDAP Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">NITI Aayog Data Dashboard</p>
+        <h1>NDAP Insight Board</h1>
+      </div>
+      <a class="cta" href="https://ndap.niti.gov.in/" target="_blank" rel="noreferrer">Open NDAP Portal</a>
+    </header>
+
+    <main>
+      <section class="panel controls">
+        <h2>Load NDAP-style CSV data</h2>
+        <p>
+          Paste a CSV URL exported from NDAP (or upload a local CSV). Required columns:
+          <code>state,year,indicator,value</code>.
+        </p>
+        <div class="control-row">
+          <input id="csvUrl" type="url" placeholder="https://.../ndap-export.csv" />
+          <button id="loadUrlBtn">Load URL</button>
+          <label class="upload">
+            Upload CSV
+            <input id="fileInput" type="file" accept=".csv" />
+          </label>
+        </div>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="kpis" id="kpis"></section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Indicator coverage by year</h2>
+          <div id="yearBars" class="bars"></div>
+        </article>
+        <article class="panel">
+          <h2>Top states (average value)</h2>
+          <div id="stateBars" class="bars"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Data preview</h2>
+        <div class="table-wrap">
+          <table id="dataTable">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Year</th>
+                <th>Indicator</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
